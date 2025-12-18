@@ -1016,8 +1016,9 @@ Please provide any comments you would like to share with us on this course:
 
 [[___ ___ ___ ___]]
 <script>
-
-  sendData({username: user_name, email: user_email, course:"NEW_USER", question:"COMMENTS", value: `@input`})
+  let feedback= `@input`
+  feedback = feedback.replace(/(\r\n|\n|\r)/g, "_"); //Google Script wont accept breaks, must replace with "_" to ensure the data is received/saved.
+  sendData({username: user_name, email: user_email, course:"NEW_USER", question:"COMMENTS", value: feedback})
   send.lia("Feedback Sent", [], false)
   "LIA: wait"
 </script>
