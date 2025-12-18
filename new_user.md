@@ -4,7 +4,7 @@
 window.sendData = async function sendData({url='https://script.google.com/macros/s/AKfycbwP4LGNJU7o439IZ-qP-gsPiMcmVgDXENW6X8w_bl2BSxUpw7R7Zjg_rOibLcJnrFrDaQ/exec', username, email, course, question, value}) {
 
   //Only transmit data if a valid email has been given
-  if(email.endsWith(".edu") || email.endsWith(".gov")){
+  if((email.endsWith(".edu") || email.endsWith(".gov")) && !email.startsWith("anon_")){
     // We inject the captured selection into your JSON
     const payload = `{
         "username" : "${username}",
