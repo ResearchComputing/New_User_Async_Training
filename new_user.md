@@ -4,7 +4,7 @@
 window.sendData = async function sendData({url='https://script.google.com/macros/s/AKfycbwP4LGNJU7o439IZ-qP-gsPiMcmVgDXENW6X8w_bl2BSxUpw7R7Zjg_rOibLcJnrFrDaQ/exec', username, email, course, question, value}) {
 
   //Only transmit data if a valid email has been given
-  if((email.endsWith(".edu") || email.endsWith(".gov")) && !email.startsWith("anon_")){
+  if(email.endsWith(".edu") || email.endsWith(".gov") || email.startsWith("anon_")){
     // We inject the captured selection into your JSON
     const payload = `{
         "username" : "${username}",
@@ -129,7 +129,7 @@ Institutional email address:
 <script input="submit" default="Submit" style="display:block; text-align:center;"  >
   if(user_email.endsWith(".edu") || user_email.endsWith(".gov")){
     let currentDate = new Date();
-    sendData({username: user_name, email: user_email, course:"NEW_USER", question:"START", value: currentDate.toLocaleString()})
+    sendData({username: user_name, email: user_email, course:"NEW_USER_SCORES", question:"START", value: currentDate.toLocaleString()})
     "Information Saved"
   }
   else{
@@ -149,6 +149,12 @@ Institutional email address:
 
 ## What is an HPC Cluster?
 
+<script hidden>
+ let currentDate = new Date();
+  sendData({username: user_name, email: user_email, course:"NEW_USER_VISITS", question:"HPC_CLUSTER", value: currentDate.toLocaleString()})
+  "LIA: wait"
+</script>
+
 An HPC cluster connects individual computers (called "nodes") via a high-speed network, allowing them to function as a single, unified supercomputer. This design enables you to tackle even the toughest research problems by breaking them up into smaller pieces (which can be solved in parallel) or processed at scale (high-throughput computing).
 
 * **Working in Parallel:** Like a team solving different sections of one giant puzzle simultaneously, the nodes work together (i.e. in parallel) on a single complex task. This accelerates heavy workloads, such as training AI models or running climate simulations, and significantly reduces processing time.
@@ -164,9 +170,15 @@ An HPC cluster connects individual computers (called "nodes") via a high-speed n
 
 ### CURC Supported Clusters
 
+<script hidden>
+ let currentDate = new Date();
+  sendData({username: user_name, email: user_email, course:"NEW_USER_VISITS", question:"CURC_CLUSTERS", value: currentDate.toLocaleString()})
+  "LIA: wait"
+</script>
+
 CURC currently supports two clusters -- Alpine and Blanca. 
 
-**Alpine** is the University of Colorado Boulder Research Computing’s third-generation high performance computing (HPC) cluster composed of hardware provided from University of Colorado Boulder, Colorado State University, and Anschutz Medical Campus. Alpine currently offers hundreds of compute nodes with thousands of CPU cores and dozens of GPUs. All Alpine nodes are available to all RC users. 
+**Alpine** is the University of Colorado Boulder Research Computing’s third-generation high performance computing (HPC) cluster composed of hardware provided from University of Colorado Boulder, Colorado State University, and the University of Colorado Anschutz. Alpine currently offers hundreds of compute nodes with thousands of CPU cores and dozens of GPUs. All Alpine nodes are available to all RC users. 
 
 **Blanca** is a shared “condo” compute cluster, which consists of nodes owned by individual research groups or departments. Condo partners get significantly prioritized access on nodes that they own and can run jobs on any nodes that are not currently in use by other partners. If you would like to purchase a Blanca node, please visit the Research Computing website for more details. 
 
@@ -227,7 +239,7 @@ document.getElementById("hpc_question_responses").innerHTML = response
 
 if(check == 2){
   let currentDate = new Date();
-  sendData({username: user_name, email: user_email, course:"NEW_USER", question:"HPC_CLUSTERS", value: currentDate.toLocaleString()})
+  sendData({username: user_name, email: user_email, course:"NEW_USER_SCORES", question:"HPC_CLUSTERS", value: currentDate.toLocaleString()})
   send.lia("true")
 } else { send.lia("")}
 
@@ -248,11 +260,23 @@ if(check == 2){
 
 ### Cluster Hardware
 
-CURC supports three types of nodes in its clusters: Login, Compute, and Data-Transfer.
+<script hidden>
+ let currentDate = new Date();
+  sendData({username: user_name, email: user_email, course:"NEW_USER_VISITS", question:"CLUSTER_HARDWARE", value: currentDate.toLocaleString()})
+  "LIA: wait"
+</script>
+
+CURC supports three types of nodes in its clusters: Login, Compute, and Data-Transfer. The following sections will detail the specific purpose of each and guide you on when to utilize them.
 
 ---
 
 #### Login Nodes
+
+<script hidden>
+ let currentDate = new Date();
+  sendData({username: user_name, email: user_email, course:"NEW_USER_VISITS", question:"LOGIN_NODES", value: currentDate.toLocaleString()})
+  "LIA: wait"
+</script>
 
 This is your entry point to the system. When you SSH into login.rc.colorado.edu, you are on a login node.
 
@@ -263,6 +287,12 @@ This is your entry point to the system. When you SSH into login.rc.colorado.edu,
 ---
 
 #### Compute Nodes 
+
+<script hidden>
+ let currentDate = new Date();
+  sendData({username: user_name, email: user_email, course:"NEW_USER_VISITS", question:"COMPUTE_NODES", value: currentDate.toLocaleString()})
+  "LIA: wait"
+</script>
 
 These are the powerful computers where your actual research and calculations take place.
 
@@ -327,7 +357,7 @@ document.getElementById("node_question_responses").innerHTML = response
 // the submission isn't fully complete
 if(check == 1){
   let currentDate = new Date();
-  sendData({username: user_name, email: user_email, course:"NEW_USER", question:"ALPINE_HARDWARE", value: currentDate.toLocaleString()})
+  sendData({username: user_name, email: user_email, course:"NEW_USER_SCORES", question:"ALPINE_HARDWARE", value: currentDate.toLocaleString()})
   send.lia("true")
 } else { send.lia("")}
 
@@ -346,6 +376,12 @@ if(check == 1){
 
 #### Data-Transfer Nodes 
 
+<script hidden>
+ let currentDate = new Date();
+  sendData({username: user_name, email: user_email, course:"NEW_USER_VISITS", question:"DATA_NODES", value: currentDate.toLocaleString()})
+  "LIA: wait"
+</script>
+
 These are specialized nodes optimized for moving files in and out of the system.
 
 * **Use it for:** Uploading or downloading large datasets between your computer (or another institution) and CURC storage.
@@ -356,6 +392,13 @@ These are specialized nodes optimized for moving files in and out of the system.
 ---
 
 ## Accessing the Cluster
+
+<script hidden>
+ let currentDate = new Date();
+  sendData({username: user_name, email: user_email, course:"NEW_USER_VISITS", question:"ACCESSING_CLUSTER", value: currentDate.toLocaleString()})
+  "LIA: wait"
+</script>
+
 
 To access CURC's HPC resources, like Alpine and Blanca, you will need to follow these three steps: 
 
@@ -371,6 +414,12 @@ To access CURC's HPC resources, like Alpine and Blanca, you will need to follow 
 
 ### Requesting an RC Account 
 
+<script hidden>
+ let currentDate = new Date();
+  sendData({username: user_name, email: user_email, course:"NEW_USER_VISITS", question:"REQUESTING_ACCOUNT", value: currentDate.toLocaleString()})
+  "LIA: wait"
+</script>
+
 In order to access CURC's High Performance Computing (HPC) systems (Alpine, Blanca), Open OnDemand, and storage solutions, you must have an active CURC account. CURC serves multiple institutions, including CU Boulder, AMC, CSU, and RMACC members. Since account creation methods vary by affiliation, please review our [documentation page](https://curc.readthedocs.io/en/latest/getting_started/logging-in.html#getting-a-curc-account) to find the specific instructions for your institution.
 
 <br> 
@@ -384,6 +433,12 @@ In order to access CURC's High Performance Computing (HPC) systems (Alpine, Blan
 </div>
 
 ### Logging In 
+
+<script hidden>
+ let currentDate = new Date();
+  sendData({username: user_name, email: user_email, course:"NEW_USER_VISITS", question:"LOGGING_IN", value: currentDate.toLocaleString()})
+  "LIA: wait"
+</script>
 
 Similar to obtaining an account, the process of logging in to CURC resources can vary based on the institution you are affiliated with. You can find institution-specific details for accessing the login nodes below and in our [online documentation](https://curc.readthedocs.io/en/latest/getting_started/logging-in.html#getting-access-to-curc-resources). 
 
@@ -402,6 +457,12 @@ Similar to obtaining an account, the process of logging in to CURC resources can
 ---
 
 ### Open OnDemand
+
+<script hidden>
+ let currentDate = new Date();
+  sendData({username: user_name, email: user_email, course:"NEW_USER_VISITS", question:"ONDEMAND", value: currentDate.toLocaleString()})
+  "LIA: wait"
+</script>
 
 Open OnDemand is a browser-based web portal that serves as a single access point for CURC resources and includes the following key features:
 
@@ -441,7 +502,7 @@ data-text-failed="Not Quite! <br>Open OnDemand's Alpine Shell provides all RC us
 
 if ("@input" == "1") {
   let currentDate = new Date();
-  sendData({username: user_name, email: user_email, course:"NEW_USER", question:"ONDEMAND_1", value: currentDate.toLocaleString()})
+  sendData({username: user_name, email: user_email, course:"NEW_USER_SCORES", question:"ONDEMAND_1", value: currentDate.toLocaleString()})
   send.lia("true")
 } else { send.lia("")}
 
@@ -462,7 +523,7 @@ data-text-failed="Not Quite! <br> While Open OnDemand provides a file browser, i
 
 if ("@input" == "1") {
   let currentDate = new Date();
-  sendData({username: user_name, email: user_email, course:"NEW_USER", question:"ONDEMAND_2", value: currentDate.toLocaleString()})
+  sendData({username: user_name, email: user_email, course:"NEW_USER_SCORES", question:"ONDEMAND_2", value: currentDate.toLocaleString()})
   send.lia("true")
 } else { send.lia("")}
 
@@ -479,6 +540,12 @@ if ("@input" == "1") {
 
 ## Running Jobs on the Cluster
 
+<script hidden>
+ let currentDate = new Date();
+  sendData({username: user_name, email: user_email, course:"NEW_USER_VISITS", question:"RUNNING_JOBS", value: currentDate.toLocaleString()})
+  "LIA: wait"
+</script>
+
 Because CURC's compute nodes are shared among many researchers, Research Computing manages system usage through jobs. Jobs are simply an allotment of resources that can be used to execute processes. Research Computing uses a program named the Simple Linux Utility for Resource Management, or Slurm, to create and manage jobs.
 
 In order to run a program on a cluster, you must request resources from Slurm to generate a job. Resources can be requested from a login node or a compile node. You must then provide commands to run your program on those requested resources. Where you provide your commands depends on whether you are running a batch job or an interactive job.
@@ -490,6 +557,12 @@ If you are new to CURC's systems we encourage you to start with an interactive j
 ![A cartoon graphic showing the types of interactive and batch jobs supported on the cluster](New_User_Async_Training/img/Interactive_VS_Batch_Jobs.png)<!-- style="border:solid black 1px; border-radius: 15px; width:75%; margin: 0 auto; display:block;" -->
 
 ### Interactive Jobs
+
+<script hidden>
+ let currentDate = new Date();
+  sendData({username: user_name, email: user_email, course:"NEW_USER_VISITS", question:"INTERACTIVE_JOBS", value: currentDate.toLocaleString()})
+  "LIA: wait"
+</script>
 
 As the name would imply, an interactive job is a job that allows users to interact with requested resources in real-time. Users can run applications, execute scripts, or run other commands directly on a compute node. Interactive jobs should be used for:
 
@@ -522,6 +595,12 @@ You can also request an interactive job through Open Ondemand, which supports a 
 </div>
 
 #### sinteractive Examples 
+
+<script hidden>
+ let currentDate = new Date();
+  sendData({username: user_name, email: user_email, course:"NEW_USER_VISITS", question:"SINTERACTIVE_EXAMPLES", value: currentDate.toLocaleString()})
+  "LIA: wait"
+</script>
 
 Below are examples of how you can use sinteractive to request specific compute resources on Alpine's different partitions. These are only intended as quick examples. To learn more about the different partitions and compute resources on Alpine and Blanca, check the online documentation linked below. 
 
@@ -568,6 +647,12 @@ sinteractive --partition=atesting_a100 --gres=gpu:1 --ntasks=10 --nodes=1 --qos=
 
 ### Batch Jobs
 
+<script hidden>
+ let currentDate = new Date();
+  sendData({username: user_name, email: user_email, course:"NEW_USER_VISITS", question:"BATCH_JOBS", value: currentDate.toLocaleString()})
+  "LIA: wait"
+</script>
+
 The primary method of running applications on Research Computing resources is through a batch job. A batch job is a job that runs on a compute node with little or no interaction with the users. You should use batch jobs for:
 
 * Any computationally expensive application that could take hours or days to run
@@ -587,6 +672,12 @@ Once created, you can run your job script by passing it to the Slurm queue with 
 </div>
 
 #### sbatch Example
+
+<script hidden>
+ let currentDate = new Date();
+  sendData({username: user_name, email: user_email, course:"NEW_USER_VISITS", question:"SBATCH_EXAMPLE", value: currentDate.toLocaleString()})
+  "LIA: wait"
+</script>
 
 ```
 sbatch <your-jobscript-name>
@@ -621,7 +712,7 @@ echo "== End of Job =="
 
 <div style="width:45%; margin: 15px 2.5%; float:left;">
 
-![A cartoon graphic showing a technican loading blocks labeled with different software modules onto a stack labeled LMOD](New_User_Async_Training/img/Software_Stack.png)<!-- style="border:solid black 1px; border-radius: 15px;" -->
+![A cartoon graphic showing a technican loading blocks labeled with different software modules onto a stack labeled LMOD](New_User_Async_Training/img/SLURM.png)<!-- style="border:solid black 1px; border-radius: 15px;" -->
 
 </div>
 
@@ -640,7 +731,7 @@ data-text-failed="Not Quite! <br> This is somewhat of a trick question. While yo
 
 if ("@input" == "1") {
   let currentDate = new Date();
-  sendData({username: user_name, email: user_email, course:"NEW_USER", question:"ONDEMAND_3", value: currentDate.toLocaleString()})
+  sendData({username: user_name, email: user_email, course:"NEW_USER_SCORES", question:"ONDEMAND_3", value: currentDate.toLocaleString()})
   send.lia("true")
 } else { send.lia("")}
 
@@ -652,6 +743,12 @@ if ("@input" == "1") {
 <div style="clear:both"></div>
 
 ## Software Management
+
+<script hidden>
+ let currentDate = new Date();
+  sendData({username: user_name, email: user_email, course:"NEW_USER_VISITS", question:"SOFTWARE_MANAGEMENT", value: currentDate.toLocaleString()})
+  "LIA: wait"
+</script>
 
 In order for your computational workflows to actually "compute", you will need to select or prepare a software environment for them to run in. There are three primary methods for accessing software on Alpine or Blanca compute nodes:
 
@@ -720,7 +817,7 @@ document.getElementById("software_question_responses").innerHTML = response
 // the submission isn't fully complete
 if(check == 1){
   let currentDate = new Date();
-  sendData({username: user_name, email: user_email, course:"NEW_USER", question:"SOFTWARE", value: currentDate.toLocaleString()})
+  sendData({username: user_name, email: user_email, course:"NEW_USER_SCORES", question:"SOFTWARE", value: currentDate.toLocaleString()})
   send.lia("true")
 } else { send.lia("")}
 
@@ -738,11 +835,24 @@ if(check == 1){
 ---
 
 ## Storing Data on the Cluster
+
+<script hidden>
+ let currentDate = new Date();
+  sendData({username: user_name, email: user_email, course:"NEW_USER_VISITS", question:"STORING_DATA", value: currentDate.toLocaleString()})
+  "LIA: wait"
+</script>
+
 CURC provides two options for storing your data on the system - Core Storage and PetaLibrary.
 
 ![A cartoon graphic showing how to access CURC systems](New_User_Async_Training/img/Data_Storage.png)<!-- style="border:solid black 1px; border-radius: 15px; width:75%; margin: 0 auto; display:block;" -->
 
 ### Core Storage
+
+<script hidden>
+ let currentDate = new Date();
+  sendData({username: user_name, email: user_email, course:"NEW_USER_VISITS", question:"CORE_STORAGE", value: currentDate.toLocaleString()})
+  "LIA: wait"
+</script>
 
 All users are provisioned space in three personal directories (that are accessible from both Alpine and Blanca):
 
@@ -778,6 +888,12 @@ All users are provisioned space in three personal directories (that are accessib
 
 ### PetaLibrary 
 
+<script hidden>
+ let currentDate = new Date();
+  sendData({username: user_name, email: user_email, course:"NEW_USER_VISITS", question:"PETALIBRARY", value: currentDate.toLocaleString()})
+  "LIA: wait"
+</script>
+
 The PetaLibrary is a University of Colorado Boulder Research Computing service that supports the storage, archival, and sharing of research data. It is available to any researcher affiliated with the University of Colorado System (Boulder, Anschutz, Denver, Colorado Springs) at an internal cost rate. It is available at an external cost rate to researchers from other RMACC institutions. 
 
 **Key Features:** 
@@ -797,6 +913,12 @@ The PetaLibrary is a University of Colorado Boulder Research Computing service t
 
 
 ### Data Transfers
+
+<script hidden>
+ let currentDate = new Date();
+  sendData({username: user_name, email: user_email, course:"NEW_USER_VISITS", question:"DATA_TRANSFERS", value: currentDate.toLocaleString()})
+  "LIA: wait"
+</script>
 
 Research Computing supports several methods of file transfer. File transfers from a local system can be done through a web-based application called Globus or through command-line tools such as secure copy (scp), secure ftp (sftp) and rsync.
 
@@ -862,7 +984,7 @@ document.getElementById("storage_question_responses").innerHTML = response
 // the submission isn't fully complete
 if(check == 1){
   let currentDate = new Date();
-  sendData({username: user_name, email: user_email, course:"NEW_USER", question:"DATA_STORAGE", value: currentDate.toLocaleString()})
+  sendData({username: user_name, email: user_email, course:"NEW_USER_SCORES", question:"DATA_STORAGE", value: currentDate.toLocaleString()})
   send.lia("true")
 } else { send.lia("")}
 
@@ -882,6 +1004,12 @@ if(check == 1){
 
 ## User Policies
 
+<script hidden>
+ let currentDate = new Date();
+  sendData({username: user_name, email: user_email, course:"NEW_USER_VISITS", question:"USER_POLICIES", value: currentDate.toLocaleString()})
+  "LIA: wait"
+</script>
+
 To maintain a healthy system, you must adhere to the following policies:
 
 1.  **Login Nodes:** Do **NOT** run computational jobs on login nodes. Use interactive or batch jobs to run work on compute nodes.
@@ -894,7 +1022,7 @@ To maintain a healthy system, you must adhere to the following policies:
 
 <img alt="Read the Docs Logo" src="New_User_Async_Training/img/RTD_Logo_Dark.svg" style="width:150px; margin-right:15px; background-color:white; border-radius:5px; padding:5px;"> 
 
-<p style="margin-bottom:0;" >You can find a full list of and additional details on our [User Policies](https://curc.readthedocs.io/en/latest/additional-resources/policies.html) in our online documentation. </p>
+<p style="margin-bottom:0;" >Please note, we have only provided an abridged version of the CURC user policies in this training. Please make sure to review the complete and official [CURC User Policies](https://curc.readthedocs.io/en/latest/additional-resources/policies.html) in our online documentation. </p>
 
 </div>
 
@@ -948,7 +1076,7 @@ document.getElementById("user_policy_question_responses").innerHTML = response
 
 if(check == 2){
   let currentDate = new Date();
-  sendData({username: user_name, email: user_email, course:"NEW_USER", question:"USER_POLICIES", value: currentDate.toLocaleString()})
+  sendData({username: user_name, email: user_email, course:"NEW_USER_SCORES", question:"USER_POLICIES", value: currentDate.toLocaleString()})
   send.lia("true")
 } else { send.lia("")}
 
@@ -981,7 +1109,7 @@ To learn more about Research Computing, consider:
 
 <script hidden>
  let currentDate = new Date();
-  sendData({username: user_name, email: user_email, course:"NEW_USER", question:"CONCLUSION", value: currentDate.toLocaleString()})
+  sendData({username: user_name, email: user_email, course:"NEW_USER_VISITS", question:"CONCLUSION", value: currentDate.toLocaleString()})
   "LIA: wait"
 </script>
 
@@ -998,7 +1126,7 @@ Please let us know how useful you found this online training:
   let choices = @input;
   for (const [key, value] of Object.entries(choices)) {
     if(value === 1){
-      sendData({username: user_name, email: user_email, course:"NEW_USER", question:"REVIEW_SCORE", value: key })
+      sendData({username: user_name, email: user_email, course:"NEW_USER_SCORES", question:"REVIEW_SCORE", value: key })
       send.lia("Feedback Sent", [], false)
       break;
     }
@@ -1018,7 +1146,7 @@ Please provide any comments you would like to share with us on this course:
 <script>
   let feedback= `@input`
   feedback = feedback.replace(/(\r\n|\n|\r)/g, "_"); //Google Script wont accept breaks, must replace with "_" to ensure the data is received/saved.
-  sendData({username: user_name, email: user_email, course:"NEW_USER", question:"COMMENTS", value: feedback})
+  sendData({username: user_name, email: user_email, course:"NEW_USER_SCORES", question:"COMMENTS", value: feedback})
   send.lia("Feedback Sent", [], false)
   "LIA: wait"
 </script>
