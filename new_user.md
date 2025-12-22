@@ -582,7 +582,7 @@ Once created, you can run your job script by passing it to the Slurm queue with 
 
 <img alt="Read the Docs Logo" src="New_User_Async_Training/img/RTD_Logo_Dark.svg" style="width:150px; margin-right:15px; background-color:white; border-radius:5px; padding:5px;"> 
 
-<p style="margin-bottom:0;" >Learn more about [batch jobs](https://curc.readthedocs.io/en/latest/running-jobs/batch-jobs.html#batch-jobs-and-job-scripting)in our online documentation. </p>
+<p style="margin-bottom:0;" >Learn more about [batch jobs](https://curc.readthedocs.io/en/latest/running-jobs/batch-jobs.html#batch-jobs-and-job-scripting) in our online documentation. </p>
 
 </div>
 
@@ -802,7 +802,7 @@ Research Computing supports several methods of file transfer. File transfers fro
 
 Data transfers using SSH protocols can be done through the CURC data transfer nodes (DTN). Transfers via the DTNs support all types of transfers, including large and/or frequent file transfers and automated (passwordless) transfers. 
 
-> We generally recommend using Globus for handling large file transfers to the system. But if you aren't sure how to handle a tricky data transfer, feel free to reach out to User Support through our [support request form](https://colorado.service-now.com/req_portal?id=ucb_sc_rc_form). We are always happy to help!s
+> We generally recommend using Globus for handling large file transfers to the system. But if you aren't sure how to handle a tricky data transfer, feel free to reach out to User Support through our [support request form](https://colorado.service-now.com/req_portal?id=ucb_sc_rc_form). We are always happy to help!
 
 <div style="display: flex; align-items:center; padding:1em; border-top: dashed 1px; border-bottom: dashed 1px; " >
 
@@ -968,7 +968,7 @@ if(check == 2){
 
 ## Conclusion
 
-**Congratulations! You have completed the New CURC User Training!**
+**Congratulations! You have completed the CURC New User Training!**
 
 If you have specific questions about CURC resources, please fill out our [support request form](https://colorado.service-now.com/req_portal?id=ucb_sc_rc_form).
 
