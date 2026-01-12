@@ -47,6 +47,8 @@ window.user_email=window.user_name + "email.edu"
 
 
 persistent: true
+
+icon: ./rc_logo.png
 -->
 
 # Research Computing New User Training
@@ -202,7 +204,10 @@ CURC currently supports two clusters -- Alpine and Blanca.
 
 Which of the following research tasks are suitable for an HPC cluster, like Alpine or Blanca? (Select all that apply)
 
-<!-- data-solution-button="off" -->
+<!-- 
+data-solution-button="off" 
+data-text-failed="Not Quite. Make sure to select ALL of the suitable research tasks." 
+data-text-solved="Correct! Both of the suitable research tasks have been selected!"-->
 [[X]] Training a deep learning neural network model using a large dataset (Gigabytes to Terabytes) 
 [[ ]] Creating a spreadsheet to calculate the average weight and height of 30 penguins 
 [[X]] Running a computational fluid dynamics (CFD) simulation of airflow over an airplane's wing 
@@ -222,6 +227,7 @@ if (@input[0] == "1") {
 //Spreadsheet 
 if (@input[1]  == "1") {
   response += "<b> Creating a spreadsheet... - Not Quite.</b>  <br> This task is a simple, sequential calculation that requires minimal resources and is easily handled by a standard personal computer. It does not benefit from or require the parallel power of a cluster. <br> <br>"
+  check-=1
 } 
 
 // CFD Simulation
@@ -233,6 +239,7 @@ if (@input[2] == "1") {
 // Hosting a website
 if (@input[3] == "1") {
   response += "<b> Hosting an interactive website... - Not Quite.</b> <br> While visualizing large datasets can be a great HPC workflow, CURC does not support web servers. Research workflows that require always-on services (like web servers) need to be setup in the cloud or on a non-CURC cluster.  <br> <br>"
+  check-=1
 } 
 
 document.getElementById("hpc_question_responses").innerHTML = response
@@ -278,7 +285,7 @@ CURC supports three types of nodes in its clusters: Login, Compute, and Data-Tra
   "LIA: wait"
 </script>
 
-This is your entry point to the system. When you SSH into login.rc.colorado.edu, you are on a login node.
+This is your entry point to the system. When you `ssh` onto login.rc.colorado.edu, you are on a login node.
 
 * **Use it for:** Lightweight tasks like editing files, writing job scripts, managing directories, and submitting jobs to the scheduler.
 
@@ -920,7 +927,7 @@ The PetaLibrary is a University of Colorado Boulder Research Computing service t
   "LIA: wait"
 </script>
 
-Research Computing supports several methods of file transfer. File transfers from a local system can be done through a web-based application called Globus or through command-line tools such as secure copy (scp), secure ftp (sftp) and rsync.
+Research Computing supports several methods of file transfer. File transfers from a local system can be done through a web-based application called Globus or through command-line tools such as secure copy (`scp`), secure ftp (`sftp`) and `rsync`.
 
 Data transfers using SSH protocols can be done through the CURC data transfer nodes (DTN). Transfers via the DTNs support all types of transfers, including large and/or frequent file transfers and automated (passwordless) transfers. 
 
@@ -1037,9 +1044,12 @@ To maintain a healthy system, you must adhere to the following policies:
 
 <div style="width:40%; border: solid black 1px; padding:10px; border-radius: 15px; float:left; margin: 15px 2.5%;" >
 
-Which of the following actions violate CURC User Policies?
+Which of the following actions violate CURC User Policies? (Select all that apply)
 
-<!-- data-solution-button="off" -->
+<!-- 
+data-solution-button="off" 
+data-text-failed="Not Quite. Make sure to select ALL of the policy violations." 
+data-text-solved="Correct! Both of the policy violations have been selected!" -->
 [[ ]] Editing your project's code in Open OnDemand's File Browser
 [[X]] Storing medical records for patients in study on Alzheimer treatments 
 [[X]] Running a simple Python program from a login node 
@@ -1053,6 +1063,7 @@ let check = 0
 //  Editing your project
 if (@input[0] == "1") {
   response += "<b>Editying your project's... - Not Quite.</b> <br> Simple editing of text files and code from the File Browser or the Alpine Shell is perfectly fine. However, downloading large files using Open OnDemand or performing compute heavy operations (uncompressing files, running scripts, etc.) from a login node is not acceptable. <br> <br>"
+  check-=1
 } 
 
 //Medical records 
@@ -1070,6 +1081,7 @@ if (@input[2] == "1") {
 // Hundreds of Jobs
 if (@input[3] == "1") {
   response += "<b> Submitting hundreds of compute jobs ... - Not Quite.</b> <br> The Alpine Cluster is designed for handling jobs at scale. Many users submit hundreds of jobs a day, but there are some limitations on how many jobs you can submit and/or run at the same time. <br> You can find limitations on job submission in our <a href='https://curc.readthedocs.io/en/latest/clusters/alpine/alpine-hardware.html#quality-of-service-qos'> online documentation</a> <br> <br>"
+  check-=1
 } 
 
 document.getElementById("user_policy_question_responses").innerHTML = response
