@@ -48,7 +48,7 @@ window.user_email=window.user_name + "email.edu"
 
 persistent: true
 
-icon: ./rc_logo.png
+icon: New_User_Async_Training/rc_logo.png
 -->
 
 # Research Computing New User Training
